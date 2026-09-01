@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - AsifTechGlobal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>AsifTechGlobal</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Get In Touch</h1>
+        <p>Let's Discuss Your Project and Find the Perfect Solution</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your Name">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="your@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company" placeholder="Your Company">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service">Service Interest *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service...</option>
+                                <option value="web">Web Development</option>
+                                <option value="mobile">Mobile App Development</option>
+                                <option value="cloud">Cloud Solutions</option>
+                                <option value="security">Cybersecurity</option>
+                                <option value="analytics">Data Analytics</option>
+                                <option value="ai">AI & Machine Learning</option>
+                                <option value="ecommerce">E-Commerce Solutions</option>
+                                <option value="consulting">Consulting & Training</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="budget">Budget Range</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select budget range...</option>
+                                <option value="5k">$5,000 - $10,000</option>
+                                <option value="10k">$10,000 - $25,000</option>
+                                <option value="25k">$25,000 - $50,000</option>
+                                <option value="50k">$50,000 - $100,000</option>
+                                <option value="100k">$100,000+</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeline">Project Timeline *</label>
+                            <select id="timeline" name="timeline" required>
+                                <option value="">Select timeline...</option>
+                                <option value="immediate">Immediate (Within 2 weeks)</option>
+                                <option value="month">This Month</option>
+                                <option value="quarter">This Quarter</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="message">Project Details *</label>
+                            <textarea id="message" name="message" rows="6" required placeholder="Tell us about your project, goals, and requirements..."></textarea>
+                        </div>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="agree" name="agree" required>
+                            <label for="agree">I agree to the terms and privacy policy</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info-wrapper">
+                    <h2>Contact Information</h2>
+                    
+                    <div class="contact-info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Email Address</h4>
+                            <p><a href="mailto:AsifTechGlobal696788@gmail.com">AsifTechGlobal696788@gmail.com</a></p>
+                            <p class="small">Response time: Within 24 hours</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Phone Support</h4>
+                            <p>Global Support Center</p>
+                            <p class="small">Available Mon-Fri, 9 AM - 6 PM UTC</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Global Presence</h4>
+                            <p>Serving clients in 50+ countries</p>
+                            <p class="small">Multiple offices worldwide</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Support Hours</h4>
+                            <p>24/7 Emergency Support Available</p>
+                            <p class="small">Premium clients: Dedicated support</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="contact-social">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Our Global Presence</h2>
+            <div class="locations-grid">
+                <div class="location-card">
+                    <h3>Asia Pacific</h3>
+                    <p><strong>India Office</strong></p>
+                    <p>New Delhi, India</p>
+                    <p>Asia's Leading Tech Hub</p>
+                </div>
+                <div class="location-card">
+                    <h3>Europe</h3>
+                    <p><strong>European Headquarters</strong></p>
+                    <p>London, United Kingdom</p>
+                    <p>Serving European Markets</p>
+                </div>
+                <div class="location-card">
+                    <h3>North America</h3>
+                    <p><strong>North America Office</strong></p>
+                    <p>New York, USA</p>
+                    <p>US & Canada Operations</p>
+                </div>
+                <div class="location-card">
+                    <h3>Middle East</h3>
+                    <p><strong>MENA Regional Office</strong></p>
+                    <p>Dubai, United Arab Emirates</p>
+                    <p>Middle East & Africa Services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4><i class="fas fa-chevron-right"></i> How long does a typical project take?</h4>
+                    <p>Project timelines vary based on scope and complexity. Small projects take 4-8 weeks, medium projects 2-3 months, and enterprise solutions 3-6 months. We provide detailed timelines during consultation.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fas fa-chevron-right"></i> What is your support process?</h4>
+                    <p>We provide 24/7 support through multiple channels. Clients get dedicated account managers, and we offer SLAs ranging from 4-hour to 24-hour response times.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fas fa-chevron-right"></i> Do you offer custom solutions?</h4>
+                    <p>Absolutely! We specialize in custom solutions tailored to your specific business needs. Our team will work with you to create the perfect solution.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fas fa-chevron-right"></i> What technologies do you use?</h4>
+                    <p>We use the latest and most reliable technologies including React, Node.js, Python, AWS, Azure, Kubernetes, and more. We choose tech based on project requirements.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fas fa-chevron-right"></i> Do you provide maintenance and support?</h4>
+                    <p>Yes! We offer comprehensive maintenance packages including bug fixes, updates, security patches, and feature enhancements.</p>
+                </div>
+                <div class="faq-item">
+                    <h4><i class="fas fa-chevron-right"></i> How do you ensure project security?</h4>
+                    <p>We follow industry-standard security practices including encryption, regular security audits, penetration testing, and compliance with GDPR, HIPAA, and ISO standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AsifTechGlobal</h4>
+                    <p>Delivering excellence in technology solutions across the globe.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: <a href="mailto:AsifTechGlobal696788@gmail.com">AsifTechGlobal696788@gmail.com</a></p>
+                    <p>Global Headquarters</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AsifTechGlobal. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
