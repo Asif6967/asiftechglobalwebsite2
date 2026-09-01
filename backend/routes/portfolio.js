@@ -96,14 +96,16 @@ router.put('/:id', requireAuth, async (req, res, next) => {
             .input('project_url', sql.NVarChar(500), bodyValue(body, 'project_url'))
             .input('technologies', sql.NVarChar(500), bodyValue(body, 'technologies'))
             .input('completed_on', sql.Date, bodyValue(body, 'completed_on') || null)
-            .input('featured', sql.Bit, bodyValue(body, 'featured') ? 1 : 0)
-            .input('sort_order', sql.Int, Number.parseInt(body.sort_order, 10) || 0)
+            .input('featured', sql.Bit, bodyValue(body, 'featured') === null ? null : (body.featured ? 1 : 0))
+            .input('sort_order', sql.Int, bodyValue(body, 'sort_order') === null ? null : (Number.parseInt(body.sort_order, 10) || 0))
             .query(`UPDATE portfolio_projects SET
                 title = COALESCE(@title, title), category = COALESCE(@category, category),
                 client = COALESCE(@client, client), description = COALESCE(@description, description),
                 image_url = COALESCE(@image_url, image_url), project_url = COALESCE(@project_url, project_url),
-                technologies = COALESCE(@technologies, technologies), completed_on = @completed_on,
-                featured = @featured, sort_order = @sort_order, updated_at = SYSUTCDATETIME()
+                technologies = COALESCE(@technologies, technologies),
+                completed_on = COALESCE(@completed_on, completed_on),
+                featured = COALESCE(@featured, featured), sort_order = COALESCE(@sort_order, sort_order),
+                updated_at = SYSUTCDATETIME()
                 WHERE id = @id`);
         if (!result.rowsAffected[0]) {
             return res.status(404).json({ success: false, error: 'Project not found' });

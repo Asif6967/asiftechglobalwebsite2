@@ -7,12 +7,6 @@ const loginView = $('#loginView');
 const dashboardView = $('#dashboardView');
 const modal = $('#modal');
 
-function escapeHtml(value) {
-    const div = document.createElement('div');
-    div.textContent = value == null ? '' : String(value);
-    return div.innerHTML;
-}
-
 function setMessage(element, message, success = false) {
     element.textContent = message || '';
     element.classList.toggle('success', success);

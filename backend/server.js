@@ -34,7 +34,8 @@ app.get('/api/health/db', async (req, res) => {
         await pool.request().query('SELECT 1');
         return res.json({ db: 'ok' });
     } catch (error) {
-        return res.status(503).json({ db: 'error', error: error.message });
+        console.error(error);
+        return res.status(503).json({ db: 'error', error: 'Database unavailable' });
     }
 });
 
@@ -51,8 +52,11 @@ app.use(express.static(path.join(__dirname, '..')));
 
 app.use((error, req, res, next) => {
     console.error(error);
-    const status = Number.isInteger(error.status) ? error.status : 500;
-    res.status(status).json({ success: false, error: error.message || 'Internal server error' });
+    const status = Number.isInteger(error.status) && error.status < 500 ? error.status : 500;
+    const message = Number.isInteger(error.status) && error.status < 500
+        ? error.message
+        : 'Internal server error';
+    res.status(status).json({ success: false, error: message });
 });
 
 app.listen(port, () => {

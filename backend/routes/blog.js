@@ -119,7 +119,8 @@ router.put('/:id', requireAuth, async (req, res, next) => {
                 title = COALESCE(@title, title), slug = COALESCE(@slug, slug), excerpt = COALESCE(@excerpt, excerpt),
                 content = COALESCE(@content, content), category = COALESCE(@category, category),
                 author = COALESCE(@author, author), image_url = COALESCE(@image_url, image_url),
-                status = COALESCE(@status, status), published_at = @published_at, updated_at = SYSUTCDATETIME()
+                status = COALESCE(@status, status), published_at = COALESCE(@published_at, published_at),
+                updated_at = SYSUTCDATETIME()
                 WHERE id = @id`);
         if (!result.rowsAffected[0]) {
             return res.status(404).json({ success: false, error: 'Post not found' });
