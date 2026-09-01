@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - AsifTechGlobal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>AsifTechGlobal</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Our Portfolio</h1>
+        <p>Showcase of Our Latest and Greatest Projects</p>
+    </section>
+
+    <!-- Portfolio Content -->
+    <section class="portfolio-section">
+        <div class="container">
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="mobile">Mobile</button>
+                <button class="filter-btn" data-filter="ai">AI/ML</button>
+                <button class="filter-btn" data-filter="cloud">Cloud</button>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Global E-Commerce Platform</h3>
+                        <p class="category">Web Development</p>
+                        <p>Built a scalable e-commerce platform serving 100,000+ users worldwide with advanced search and payment integration.</p>
+                        <div class="tech-stack">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                            <span>AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Fitness Tracking App</h3>
+                        <p class="category">Mobile App</p>
+                        <p>Cross-platform fitness app with real-time tracking, social features, and AI-powered workout recommendations.</p>
+                        <div class="tech-stack">
+                            <span>React Native</span>
+                            <span>Firebase</span>
+                            <span>Machine Learning</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="ai">
+                    <div class="portfolio-image">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>AI-Powered Chatbot</h3>
+                        <p class="category">AI & Machine Learning</p>
+                        <p>Intelligent customer service chatbot using NLP, capable of handling 10,000+ daily conversations with 95% accuracy.</p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>TensorFlow</span>
+                            <span>NLP</span>
+                            <span>AWS Lambda</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="cloud">
+                    <div class="portfolio-image">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Cloud Migration Project</h3>
+                        <p class="category">Cloud Solutions</p>
+                        <p>Successfully migrated enterprise infrastructure to AWS with 99.9% uptime and 40% cost reduction.</p>
+                        <div class="tech-stack">
+                            <span>AWS</span>
+                            <span>Docker</span>
+                            <span>Kubernetes</span>
+                            <span>Jenkins</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Analytics Dashboard</h3>
+                        <p class="category">Web Development</p>
+                        <p>Real-time analytics dashboard providing insights for 200+ enterprise clients with custom visualizations.</p>
+                        <div class="tech-stack">
+                            <span>Vue.js</span>
+                            <span>D3.js</span>
+                            <span>PostgreSQL</span>
+                            <span>WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="mobile">
+                    <div class="portfolio-image">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Retail Management System</h3>
+                        <p class="category">Mobile App</p>
+                        <p>Native iOS and Android app for retail chain with 500+ stores managing inventory, sales, and customer data.</p>
+                        <div class="tech-stack">
+                            <span>Swift</span>
+                            <span>Kotlin</span>
+                            <span>SQLite</span>
+                            <span>REST API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="ai">
+                    <div class="portfolio-image">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Image Recognition System</h3>
+                        <p class="category">AI & Machine Learning</p>
+                        <p>Computer vision system for medical imaging with 98% accuracy in identifying abnormalities in X-rays.</p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>PyTorch</span>
+                            <span>OpenCV</span>
+                            <span>CUDA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Blockchain Solution</h3>
+                        <p class="category">Web Development</p>
+                        <p>Smart contract development and blockchain integration for supply chain transparency and verification.</p>
+                        <div class="tech-stack">
+                            <span>Solidity</span>
+                            <span>Ethereum</span>
+                            <span>Web3.js</span>
+                            <span>React</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AsifTechGlobal</h4>
+                    <p>Delivering excellence in technology solutions across the globe.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>Email: <a href="mailto:AsifTechGlobal696788@gmail.com">AsifTechGlobal696788@gmail.com</a></p>
+                    <p>Global Headquarters</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 AsifTechGlobal. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
