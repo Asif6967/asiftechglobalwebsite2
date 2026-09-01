@@ -19,7 +19,8 @@ router.get('/', async (req, res, next) => {
     try {
         const { page, limit, offset } = pagination(req.query);
         const category = req.query.category ? String(req.query.category) : null;
-        const search = req.query.search ? `%${String(req.query.search)}%` : null;
+        const searchTerm = req.query.search ? String(req.query.search) : null;
+        const search = searchTerm ? '%' + searchTerm + '%' : null;
         const pool = await getPool();
         const request = pool.request()
             .input('limit', sql.Int, limit)
