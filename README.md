@@ -459,3 +459,62 @@ Planned features for future versions:
 **September 1, 2024**
 
 For the latest updates and information, visit: https://github.com/Asif6967/asiftechglobalwebsite2
+
+## Backend & Admin Dashboard
+
+The site includes a Node.js/Express backend using Azure SQL through the `mssql`
+driver. The backend also serves the static site and the admin dashboard.
+
+### Configuration
+
+Copy `backend/.env.example` to `backend/.env` and set these values:
+
+| Variable | Purpose |
+| --- | --- |
+| `PORT` | HTTP port (default `3000`) |
+| `CORS_ORIGIN` | Allowed browser origin, or `*` |
+| `JWT_SECRET` | Long, random secret used for admin tokens |
+| `DB_SERVER` | Azure SQL server hostname |
+| `DB_PORT` | SQL port (default `1433`) |
+| `DB_NAME` | Azure SQL database name |
+| `DB_USER` | Database username |
+| `DB_PASSWORD` | Database password |
+| `DB_TRUST_CERT` | Set to `true` only when certificate trust is required |
+
+Never commit `backend/.env` or production secrets.
+
+### Database and local server
+
+1. Create or select an Azure SQL database (or SQL Managed Instance database).
+2. Run `database/schema.sql` against it using the Azure portal query editor,
+   SQL Server Management Studio, or the `sqlcmd` tooling.
+3. Run `database/seed.sql` against the same database.
+4. Install and start the backend:
+
+   ```bash
+   cd backend
+   npm install
+   npm start
+   ```
+
+The public site is available at `http://localhost:3000/`, and the admin
+dashboard is at [http://localhost:3000/admin/admin.html](http://localhost:3000/admin/admin.html).
+The seeded admin account is `admin` / `ChangeMe123!`. **Change this password
+immediately after the first login** and use a strong `JWT_SECRET` in any
+non-development environment.
+
+### API endpoints
+
+| Method | Endpoint | Access | Description |
+| --- | --- | --- | --- |
+| GET | `/api/health` | Public | Server health check (does not require the database) |
+| GET | `/api/health/db` | Public | Database connectivity check |
+| POST | `/api/auth/login` | Public | Issue an admin JWT |
+| GET, POST | `/api/contact` | GET admin / POST public | List or submit contact enquiries |
+| PATCH, DELETE | `/api/contact/:id/status`, `/api/contact/:id` | Admin | Update or remove a contact |
+| GET | `/api/blog`, `/api/blog/:slug` | Public | List published posts or fetch one |
+| POST, PUT, DELETE | `/api/blog`, `/api/blog/:id` | Admin | Manage blog posts |
+| GET | `/api/portfolio`, `/api/portfolio/:id` | Public | List or fetch portfolio projects |
+| POST, PUT, DELETE | `/api/portfolio`, `/api/portfolio/:id` | Admin | Manage portfolio projects |
+
+Admin endpoints require `Authorization: Bearer <token>`.

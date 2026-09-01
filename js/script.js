@@ -1,3 +1,5 @@
+const API_BASE = window.APP_API_BASE || (window.location.origin + '/api');
+
 // Mobile Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
@@ -70,17 +72,32 @@ if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
+        const payload = Object.fromEntries(new FormData(contactForm).entries());
+        const existingMessage = contactForm.querySelector('.form-message');
+        const feedback = existingMessage || document.createElement('p');
+        feedback.className = 'form-message';
+        feedback.setAttribute('role', 'status');
+        if (!existingMessage) contactForm.appendChild(feedback);
 
-        if (name && email && message) {
-            // Show success message
-            alert('Thank you for reaching out! We will get back to you soon.');
-            contactForm.reset();
-        } else {
-            alert('Please fill in all required fields.');
-        }
+        fetch(API_BASE + '/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        })
+            .then(async response => {
+                const data = await response.json().catch(() => ({}));
+                if (!response.ok) throw new Error(data.error || 'Unable to send your message.');
+                return data;
+            })
+            .then(() => {
+                feedback.textContent = 'Thank you for reaching out! We will get back to you soon.';
+                feedback.style.color = '#15803d';
+                contactForm.reset();
+            })
+            .catch(() => {
+                feedback.textContent = 'We could not send your message right now. Please try again or email us directly.';
+                feedback.style.color = '#b91c1c';
+            });
     });
 }
 
