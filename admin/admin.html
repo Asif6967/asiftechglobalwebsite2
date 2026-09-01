@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsifTechGlobal Admin</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <main class="shell">
+        <section id="loginView" class="card login-card">
+            <div class="brand">AsifTechGlobal</div>
+            <h1>Admin Dashboard</h1>
+            <p class="muted">Sign in to manage your website content.</p>
+            <form id="loginForm">
+                <label>Username<input id="loginUsername" name="username" autocomplete="username" required></label>
+                <label>Password<input id="loginPassword" name="password" type="password" autocomplete="current-password" required></label>
+                <button class="button primary" type="submit">Sign in</button>
+                <p id="loginMessage" class="message" role="alert"></p>
+            </form>
+        </section>
+
+        <section id="dashboardView" hidden>
+            <header class="topbar">
+                <div><div class="brand">AsifTechGlobal</div><span class="muted">Content management</span></div>
+                <button id="logoutButton" class="button outline">Log out</button>
+            </header>
+            <div id="dashboardMessage" class="message" role="alert"></div>
+            <div class="stats">
+                <article class="stat card"><span>Total contacts</span><strong id="totalContacts">0</strong></article>
+                <article class="stat card"><span>New contacts</span><strong id="newContacts">0</strong></article>
+                <article class="stat card"><span>Published posts</span><strong id="totalPosts">0</strong></article>
+                <article class="stat card"><span>Projects</span><strong id="totalProjects">0</strong></article>
+            </div>
+            <nav class="tabs" aria-label="Admin sections">
+                <button class="tab active" data-tab="contacts">Contacts</button>
+                <button class="tab" data-tab="blog">Blog</button>
+                <button class="tab" data-tab="portfolio">Portfolio</button>
+            </nav>
+
+            <section id="contactsPanel" class="panel card">
+                <div class="panel-heading"><div><h2>Contact submissions</h2><p class="muted">Review and track incoming enquiries.</p></div></div>
+                <div class="table-wrap"><table><thead><tr><th>Contact</th><th>Company</th><th>Service</th><th>Message</th><th>Status</th><th>Received</th><th></th></tr></thead><tbody id="contactsBody"></tbody></table></div>
+            </section>
+
+            <section id="blogPanel" class="panel card" hidden>
+                <div class="panel-heading"><div><h2>Blog posts</h2><p class="muted">Create and maintain your published content.</p></div><button id="newBlogButton" class="button primary">New post</button></div>
+                <div class="table-wrap"><table><thead><tr><th>Title</th><th>Category</th><th>Status</th><th>Published</th><th></th></tr></thead><tbody id="blogBody"></tbody></table></div>
+            </section>
+
+            <section id="portfolioPanel" class="panel card" hidden>
+                <div class="panel-heading"><div><h2>Portfolio projects</h2><p class="muted">Showcase your latest work.</p></div><button id="newPortfolioButton" class="button primary">New project</button></div>
+                <div class="table-wrap"><table><thead><tr><th>Title</th><th>Category</th><th>Featured</th><th>Order</th><th></th></tr></thead><tbody id="portfolioBody"></tbody></table></div>
+            </section>
+        </section>
+    </main>
+
+    <div id="modal" class="modal" hidden>
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-heading"><h2 id="modalTitle"></h2><button id="closeModal" class="icon-button" aria-label="Close">×</button></div>
+            <form id="contentForm"></form>
+        </div>
+    </div>
+    <script src="admin.js" defer></script>
+</body>
+</html>
