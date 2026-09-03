@@ -1,147 +1,60 @@
-# AsifTechGlobal - Premium Website 🚀
+# AsifTechGlobal - Full-Stack Dynamic Platform 🚀
 
-**A professional, feature-rich website for AsifTechGlobal - your global technology partner.**
+**A modern, production-ready Full-Stack Web Application & Management Suite for AsifTechGlobal.**
 
 ---
 
 ## 📋 Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Website Pages](#website-pages)
-- [Technology Stack](#technology-stack)
-- [Directory Structure](#directory-structure)
-- [Getting Started](#getting-started)
-- [Features Breakdown](#features-breakdown)
-- [Contact Information](#contact-information)
-- [License](#license)
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [System Architecture & Stack](#-system-architecture--stack)
+- [Directory Structure](#-directory-structure)
+- [Quick Start Guide](#-quick-start-guide)
+- [Default Admin Credentials](#-default-admin-credentials)
+- [Admin Dashboard Features](#-admin-dashboard-features)
+- [REST API Reference](#-rest-api-reference)
+- [Database Schema](#-database-schema)
+- [Deployment Options](#-deployment-options)
+- [License](#-license)
 
 ---
 
 ## 🌟 Overview
 
-**AsifTechGlobal** is a comprehensive, professional website built for a global technology company. The website showcases services, portfolio, team expertise, and provides multiple channels for client engagement.
-
-**Live Site:** https://github.com/Asif6967/asiftechglobalwebsite2
-
-**Key Highlights:**
-- ✨ **Ultra-Premium Design** - Modern, sleek, and professional UI
-- 🌍 **Global Presence** - Serving 50+ countries
-- 💼 **Enterprise Ready** - Scalable and secure infrastructure
-- 📱 **Fully Responsive** - Perfect on all devices
-- ⚡ **High Performance** - Fast loading and smooth animations
-- 🎯 **SEO Optimized** - Search engine friendly
+**AsifTechGlobal** is an enterprise-grade full-stack web application featuring:
+- **Client-Facing Dynamic Frontend**: Interactive home, about, services, dynamic portfolio, dynamic blog with real-time search, interactive contact form, and client payment portal.
+- **Node.js Express REST API**: Production-ready backend with JWT authentication, file upload processing, database connection pooling, and email notifications.
+- **Integrated Admin Control Center**: Control panel to manage inquiries, blog posts, portfolio projects, newsletter subscribers, and online payment transactions.
+- **Zero-Config Database**: SQLite with automated schema migration & seed population, plus MySQL schema compatibility.
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-### 🏠 Home Page
-- **Hero Section** - Eye-catching banner with call-to-action buttons
-- **Features Showcase** - Why choose AsifTechGlobal
-- **Services Preview** - Quick overview of all services
-- **Statistics** - Company achievements and milestones
-- **Call-to-Action** - Prominent engagement buttons
-
-### 📖 About Us Page
-- **Company Introduction** - Mission, Vision, and Values
-- **Team Section** - Meet the expert team
-- **Timeline** - Company journey from 2009 to present
-- **Leadership** - Key team members and their expertise
-
-### 🛠️ Services Page
-Comprehensive details on 8 service categories:
-1. **Web Development** - Frontend, Backend, APIs
-2. **Mobile Apps** - Native and Cross-platform
-3. **Cloud Solutions** - AWS, Azure, Google Cloud
-4. **Cybersecurity** - Protection and compliance
-5. **Data Analytics** - Business Intelligence & BI Tools
-6. **AI & Machine Learning** - Cutting-edge AI solutions
-7. **E-Commerce** - Complete platform solutions
-8. **Training & Consulting** - Expert guidance
-
-### 🎨 Portfolio Page
-- **8+ Featured Projects** - Real-world case studies
-- **Category Filtering** - Web, Mobile, AI/ML, Cloud
-- **Tech Stack Display** - Technologies used in each project
-- **Project Details** - Description and metrics
-- **Interactive Filters** - Filter by service category
-
-### 📚 Blog Page
-- **8+ Articles** - Latest tech insights
-- **Featured Article** - Highlighted content
-- **Search Functionality** - Find articles easily
-- **Categories** - AI/ML, Cloud, Security, Web Dev, etc.
-- **Reading Time** - Estimated read duration
-- **Newsletter** - Subscribe for updates
-- **Pagination** - Browse multiple pages
-
-### 📞 Contact Page
-- **Contact Form** - Comprehensive inquiry form with:
-  - Name, Email, Phone, Company fields
-  - Service selection dropdown
-  - Budget range options
-  - Project timeline selector
-  - Detailed project description
-  - Terms agreement checkbox
-
-- **Contact Information** - Multiple contact methods:
-  - Email address
-  - Phone support
-  - Global presence info
-  - 24/7 support availability
-
-- **Global Locations** - Offices in:
-  - Asia Pacific (India)
-  - Europe (London)
-  - North America (New York)
-  - Middle East (Dubai)
-
-- **FAQ Section** - 6 comprehensive FAQs
-  - Project timelines
-  - Support process
-  - Custom solutions
-  - Technologies used
-  - Maintenance & support
-  - Security practices
+- ✅ **Full Dynamic REST API**: Powered by Node.js & Express
+- ✅ **Enterprise Admin Dashboard**: `/admin` portal with JWT authentication
+- ✅ **Real-Time Client Inquiries**: Contact form connected directly to database with email alerts
+- ✅ **Dynamic Blog Management**: Publish, edit, and delete technology articles with image uploads
+- ✅ **Dynamic Portfolio Showcase**: Showcase client projects with live category filters
+- ✅ **Newsletter Engine**: Collect and export subscriber lists to CSV
+- ✅ **Payment Gateway Integration**: Process invoices and project deposits (Stripe & Razorpay ready + sandbox mock)
+- ✅ **Secure File/Image Upload**: Multer disk storage for blog covers and project thumbnails
+- ✅ **Mobile-First Responsive Design**: 100% responsive on smartphones, tablets, and desktops
 
 ---
 
-## 📄 Website Pages
+## 🛠️ System Architecture & Stack
 
-| Page | URL | Purpose |
-|------|-----|---------|
-| Home | `index.html` | Main landing page |
-| About | `about.html` | Company information |
-| Services | `services.html` | Detailed service offerings |
-| Portfolio | `portfolio.html` | Project showcase |
-| Blog | `blog.html` | Articles & insights |
-| Contact | `contact.html` | Contact form & information |
-
----
-
-## 🛠️ Technology Stack
-
-### Frontend Technologies
-- **HTML5** - Semantic markup
-- **CSS3** - Modern styling with gradients, flexbox, grid
-- **JavaScript (Vanilla)** - No framework dependencies
-- **Font Awesome 6.4** - Icon library
-
-### Design Principles
-- **Responsive Design** - Mobile-first approach
-- **CSS Custom Properties** - Dynamic theming
-- **Smooth Animations** - Transitions and transforms
-- **Accessibility** - WCAG compliance
-
-### Features Built-in
-- Form validation
-- Portfolio filtering
-- Blog search functionality
-- Mobile menu toggle
-- Smooth scrolling
-- Newsletter subscription
-- FAQ toggle functionality
+| Layer | Technology | Description |
+|---|---|---|
+| **Frontend** | HTML5, CSS3, JavaScript (ES6+), FontAwesome | Lightweight, ultra-fast client interface |
+| **Backend Runtime** | Node.js (v18+) + Express.js | High-performance RESTful API server |
+| **Database** | Native SQLite (`node:sqlite`) + MySQL Schema | Zero-dependency embedded database |
+| **Authentication** | JSON Web Tokens (JWT) + Bcrypt.js | Secure stateless admin sessions |
+| **File Storage** | Multer | Local disk storage for uploads |
+| **Email Service** | Nodemailer | SMTP notifications with console fallback |
+| **Payments** | Stripe & Razorpay compatible | Online order creation & verification |
 
 ---
 
@@ -149,313 +62,142 @@ Comprehensive details on 8 service categories:
 
 ```
 asiftechglobalwebsite2/
-├── index.html              # Home page
-├── about.html              # About us page
-├── services.html           # Services page
-├── portfolio.html          # Portfolio/Projects page
-├── blog.html               # Blog page
-├── contact.html            # Contact page
+├── index.html              # Home Page with Hero & Services preview
+├── about.html              # About Company, Mission & Team
+├── services.html           # 8 Core Services + Online Payment trigger
+├── portfolio.html          # Dynamic Project Showcase
+├── blog.html               # Dynamic Tech Insights & Search
+├── contact.html            # Contact Form connected to API
 ├── css/
-│   └── style.css           # Main stylesheet (2000+ lines)
+│   └── style.css           # Premium UI styling & toast alerts
 ├── js/
-│   └── script.js           # JavaScript functionality
-├── images/                 # Images directory (placeholder)
-└── README.md               # This file
+│   └── script.js           # Client AJAX & dynamic data engine
+│
+├── admin/                  # Enterprise Admin Panel
+│   ├── admin.html          # Control Center Dashboard
+│   ├── admin.css           # Modern Dashboard Styling
+│   └── admin.js            # JWT auth, CRUD operations & modals
+│
+├── backend/                # Node.js API Backend
+│   ├── server.js           # Express server entrypoint
+│   ├── package.json        # Dependencies & start scripts
+│   ├── .env.example        # Environment variables template
+│   ├── .env                # Active configuration
+│   ├── config/
+│   │   └── db.js           # Database initialization & seeds
+│   ├── middleware/
+│   │   ├── auth.js         # JWT verification middleware
+│   │   └── upload.js       # Multer image upload handler
+│   ├── routes/
+│   │   ├── auth.js         # Admin login & password change
+│   │   ├── contact.js      # Contact inquiry endpoints
+│   │   ├── blog.js         # Blog CRUD endpoints
+│   │   ├── portfolio.js    # Portfolio CRUD endpoints
+│   │   ├── newsletter.js   # Subscriber management
+│   │   ├── payment.js      # Payment orders & verification
+│   │   ├── upload.js       # File upload handler
+│   │   └── stats.js        # Dashboard analytics metrics
+│   └── uploads/            # Uploaded images & media
+│
+├── database/
+│   ├── schema.sql          # SQL table definitions
+│   ├── seed.sql            # Initial demo data
+│   └── asiftech.db         # SQLite active database file
+│
+├── start.bat               # 1-Click launcher for Windows
+└── README.md               # Documentation
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Quick Start Guide
 
-### Prerequisites
-- Modern web browser (Chrome, Firefox, Safari, Edge)
-- Text editor or IDE
-- Git (for version control)
+### Option 1: One-Click Launch (Windows)
+Double-click `start.bat` in the project root. It will install dependencies, launch the server, and open your browser automatically!
 
-### Installation
-
-1. **Clone the Repository**
-```bash
-git clone https://github.com/Asif6967/asiftechglobalwebsite2.git
-cd asiftechglobalwebsite2
-```
-
-2. **Open in Browser**
-```bash
-# Simply open index.html in your web browser
-# Or use a local server:
-
-# Using Python 3:
-python -m http.server 8000
-
-# Using Python 2:
-python -m SimpleHTTPServer 8000
-
-# Using Node.js http-server:
-npm install -g http-server
-http-server
-```
-
-3. **Access the Site**
-```
-Open browser and navigate to:
-- http://localhost:8000 (or your server port)
-```
+### Option 2: Command Line
+1. **Navigate to the backend directory**:
+   ```bash
+   cd backend
+   ```
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+3. **Start the server**:
+   ```bash
+   npm start
+   ```
+4. **Access the application**:
+   - 🌐 **Website**: [http://localhost:5000](http://localhost:5000)
+   - ⚡ **Admin Dashboard**: [http://localhost:5000/admin](http://localhost:5000/admin)
+   - 📡 **API Health Check**: [http://localhost:5000/api/health](http://localhost:5000/api/health)
 
 ---
 
-## 🎯 Features Breakdown
+## 🔐 Default Admin Credentials
 
-### 🎨 Design Features
-- **Color Scheme:**
-  - Primary: #2563eb (Blue)
-  - Secondary: #1e40af (Dark Blue)
-  - Accent: #f59e0b (Amber)
-  - Text: #1f2937 (Dark Gray)
+When the backend starts for the first time, it automatically creates the default administrator account:
 
-- **Typography:**
-  - Modern sans-serif font (Segoe UI)
-  - Responsive font sizes
-  - Excellent readability
+- **Login URL:** [http://localhost:5000/admin](http://localhost:5000/admin)
+- **Email:** `AsifTechGlobal696788@gmail.com`
+- **Default Password:** `Admin@AsifTech2026`
 
-- **Responsive Breakpoints:**
-  - Desktop: 1200px+
-  - Tablet: 768px - 1200px
-  - Mobile: < 768px
-  - Small Mobile: < 480px
-
-### ⚙️ Functional Features
-
-1. **Navigation Bar**
-   - Sticky navigation
-   - Active page highlighting
-   - Mobile hamburger menu
-   - Smooth scrolling
-
-2. **Forms**
-   - Contact form with validation
-   - Newsletter subscription
-   - Form field validation
-   - Success/error messages
-
-3. **Filtering**
-   - Portfolio category filtering
-   - Blog search functionality
-   - Dynamic filtering without page reload
-
-4. **User Interaction**
-   - Hover effects
-   - Smooth transitions
-   - Interactive elements
-   - FAQ toggle
-
-### 📊 Content Management
-
-- **Portfolio**: 8 featured projects with tech stacks
-- **Services**: 8 comprehensive service categories
-- **Blog**: 8 articles with categorization
-- **Team**: 4 team members with roles
-- **Timeline**: 5 milestone events
+*(You can change your password anytime inside the Admin Dashboard Settings tab).*
 
 ---
 
-## 📱 Responsive Design
+## 📡 REST API Reference
 
-The website is fully responsive and optimized for:
-- 📱 Mobile phones (320px+)
-- 📱 Tablets (768px+)
-- 💻 Desktops (1200px+)
-- 🖥️ Large screens (1920px+)
+### Public Endpoints
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/api/health` | Server status and timestamp |
+| `POST` | `/api/contact` | Submit a customer inquiry |
+| `GET` | `/api/blog` | Fetch published blogs (`?category=...&search=...`) |
+| `GET` | `/api/blog/:slug` | Fetch single article details |
+| `GET` | `/api/portfolio` | Fetch portfolio projects (`?category=...`) |
+| `POST` | `/api/newsletter` | Subscribe email to newsletter |
+| `POST` | `/api/payment/create-order` | Initiate client invoice payment |
+| `POST` | `/api/payment/verify` | Confirm and record payment |
 
-### Mobile Features
-- Hamburger navigation menu
-- Touch-friendly buttons
-- Optimized layouts
-- Fast loading
-
----
-
-## 🔐 Security Features
-
-- No external dependencies required
-- Pure HTML/CSS/JS (lightweight)
-- HTTPS ready
-- Form validation on client-side
-- Secure email links
-
----
-
-## 💡 Customization Guide
-
-### Change Company Details
-Edit these values in all HTML files:
-```html
-<!-- Company Name -->
-<h1>AsifTechGlobal</h1>
-
-<!-- Email -->
-<a href="mailto:AsifTechGlobal696788@gmail.com">
-  AsifTechGlobal696788@gmail.com
-</a>
-```
-
-### Modify Color Scheme
-Edit CSS variables in `css/style.css`:
-```css
-:root {
-    --primary-color: #2563eb;      /* Change primary color */
-    --secondary-color: #1e40af;    /* Change secondary color */
-    --accent-color: #f59e0b;       /* Change accent color */
-}
-```
-
-### Add New Content
-- **Add Service**: Copy a service block in `services.html`
-- **Add Portfolio Item**: Copy portfolio-item div in `portfolio.html`
-- **Add Blog Post**: Copy blog-post div in `blog.html`
+### Protected Admin Endpoints (Require `Authorization: Bearer <token>`)
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/auth/login` | Authenticate admin |
+| `GET` | `/api/auth/me` | Verify active session |
+| `PUT` | `/api/auth/password` | Change admin password |
+| `GET` | `/api/stats` | Dashboard metrics & recent activity |
+| `GET` | `/api/contact` | List all inquiries |
+| `DELETE` | `/api/contact/:id` | Delete inquiry |
+| `POST` | `/api/blog` | Create new article |
+| `PUT` | `/api/blog/:id` | Update article |
+| `DELETE` | `/api/blog/:id` | Delete article |
+| `POST` | `/api/portfolio` | Add portfolio project |
+| `DELETE` | `/api/portfolio/:id` | Delete project |
+| `POST` | `/api/upload` | Upload image/document |
+| `GET` | `/api/newsletter` | List subscribers (exportable) |
+| `GET` | `/api/payment/transactions`| View all payments & revenue |
 
 ---
 
 ## 🌐 Deployment Options
 
-### Option 1: GitHub Pages
+### Render / Railway / Heroku (Node.js)
+1. Add environment variable `PORT` (assigned by provider).
+2. Set root start command: `npm --prefix backend start`.
+3. Set build command: `npm --prefix backend install`.
+
+### VPS / Ubuntu / Debian
 ```bash
-1. Push to GitHub
-2. Go to Settings > Pages
-3. Select main branch as source
-4. Your site will be live at: https://Asif6967.github.io/asiftechglobalwebsite2
+git clone https://github.com/Asif6967/asiftechglobalwebsite2.git
+cd asiftechglobalwebsite2/backend
+npm install
+npm install -g pm2
+pm2 start server.js --name "asiftech-app"
 ```
-
-### Option 2: Netlify
-```bash
-1. Connect your GitHub repository
-2. Set build command: (leave empty for static)
-3. Deploy
-```
-
-### Option 3: Vercel
-```bash
-1. Import GitHub repository
-2. Deploy automatically
-3. Custom domain setup available
-```
-
-### Option 4: Traditional Hosting
-```bash
-1. FTP/SFTP upload all files
-2. Set index.html as default file
-3. Configure domain in hosting panel
-```
-
----
-
-## 📧 Contact Information
-
-**Company Email:** AsifTechGlobal696788@gmail.com
-
-**Global Offices:**
-- 🇮🇳 Asia Pacific: New Delhi, India
-- 🇬🇧 Europe: London, United Kingdom
-- 🇺🇸 North America: New York, USA
-- 🇦🇪 Middle East: Dubai, UAE
-
-**Support:** 24/7 Support Available
-
----
-
-## 📈 Performance Metrics
-
-- ⚡ **Load Time:** < 2 seconds
-- 🎯 **Lighthouse Score:** 95+
-- 📱 **Mobile Ready:** 100%
-- ♿ **Accessibility:** WCAG AA
-- 🔍 **SEO:** Optimized
-
----
-
-## 🔄 Version History
-
-**v2.0 - Premium Website (Current)**
-- Complete redesign
-- 6 professional pages
-- 8 service categories
-- Portfolio showcase
-- Blog with search
-- Advanced contact form
-- FAQ section
-- Global locations
-
-**v1.0 - Initial Version**
-- Basic placeholder
 
 ---
 
 ## 📄 License
-
-This website is proprietary to **AsifTechGlobal**. All rights reserved.
-
----
-
-## 🙏 Credits
-
-**Website Created By:** AsifTechGlobal Team
-
-**Design & Development:** Premium Web Solutions
-
----
-
-## 📞 Support & Maintenance
-
-For website updates, maintenance, or customization requests:
-- Email: AsifTechGlobal696788@gmail.com
-- Website: Visit contact page for more options
-
----
-
-## 🎓 Browser Compatibility
-
-- ✅ Chrome 90+
-- ✅ Firefox 88+
-- ✅ Safari 14+
-- ✅ Edge 90+
-- ✅ Mobile Browsers (iOS Safari, Chrome Mobile)
-
----
-
-## 🚀 Future Enhancements
-
-Planned features for future versions:
-- [ ] Backend integration for form submissions
-- [ ] CMS integration for easy content management
-- [ ] Multi-language support
-- [ ] Dark mode option
-- [ ] Advanced analytics
-- [ ] Social media feeds
-- [ ] Video integration
-- [ ] Team member profiles with details
-- [ ] Client testimonials section
-- [ ] Automated email notifications
-
----
-
-## 📞 Quick Links
-
-- [Homepage](index.html)
-- [About Us](about.html)
-- [Services](services.html)
-- [Portfolio](portfolio.html)
-- [Blog](blog.html)
-- [Contact Us](contact.html)
-
----
-
-**Made with ❤️ by AsifTechGlobal Team**
-
-*Serving Global Technology Solutions Since 2009*
-
----
-
-## Last Updated
-**September 1, 2024**
-
-For the latest updates and information, visit: https://github.com/Asif6967/asiftechglobalwebsite2
+MIT License. Developed for **AsifTechGlobal**.
