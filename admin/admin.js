@@ -181,6 +181,7 @@ function switchTab(tabId) {
         portfolio: 'Portfolio Showcase Management',
         subscribers: 'Newsletter Subscribers List',
         payments: 'Payment Transactions & Invoices',
+        content: 'Website Content Control',
         settings: 'Admin Security Settings'
     };
     document.getElementById('current-tab-title').textContent = titleMap[tabId] || 'Dashboard';
@@ -192,7 +193,67 @@ function switchTab(tabId) {
     if (tabId === 'portfolio') loadPortfolio();
     if (tabId === 'subscribers') loadSubscribers();
     if (tabId === 'payments') loadPayments();
+    if (tabId === 'content') loadCmsContent();
 }
+
+const cmsSelect = document.getElementById('cms-collection-select');
+const cmsAddButton = document.getElementById('cms-add-btn');
+const cmsList = document.getElementById('cms-content-list');
+
+async function loadCmsContent() {
+    if (!cmsSelect || !cmsList) return;
+    cmsList.innerHTML = '<p class="text-muted">Loading content...</p>';
+    try {
+        const res = await fetch(`${API_BASE}/cms/${cmsSelect.value}`, { headers: getAuthHeaders() });
+        const json = await res.json();
+        if (!res.ok || !json.success) throw new Error(json.message || 'Unable to load content');
+        cmsList.innerHTML = json.data.length ? json.data.map(item => `
+            <article class="cms-item">
+                <div><strong>${escapeHtml(item.name || item.question || item.quote)}</strong>
+                <p>${escapeHtml(item.description || item.answer || item.company || '')}</p></div>
+                <button class="btn-danger btn-sm" onclick="deleteCmsContent('${cmsSelect.value}', ${item.id})"><i class="fas fa-trash"></i> Delete</button>
+            </article>`).join('') : '<p class="text-muted">No content yet.</p>';
+    } catch (error) {
+        console.error('CMS load error:', error);
+        cmsList.innerHTML = '<p class="text-muted">Unable to load content.</p>';
+    }
+}
+
+async function addCmsContent() {
+    const type = cmsSelect.value;
+    const fields = type === 'packages'
+        ? { name: prompt('Package name:'), audience: prompt('Audience:'), description: prompt('Description:'), price_label: prompt('Price label:'), features: prompt('Features separated by |:') }
+        : type === 'faqs'
+            ? { question: prompt('Question:'), answer: prompt('Answer:'), sort_order: 0, published: 1 }
+            : { name: prompt('Client/person name:'), role: prompt('Role:'), company: prompt('Company:'), quote: prompt('Testimonial quote:'), rating: 5, featured: 1 };
+    const required = type === 'faqs' ? [fields.question, fields.answer] : type === 'packages' ? [fields.name, fields.description] : [fields.name, fields.quote];
+    if (required.some(value => !value)) return;
+    try {
+        const res = await fetch(`${API_BASE}/cms/${type}`, { method: 'POST', headers: getAuthHeaders(), body: JSON.stringify(fields) });
+        const json = await res.json();
+        showToast(json.message || 'Content saved', json.success ? 'success' : 'error');
+        if (json.success) loadCmsContent();
+    } catch (error) {
+        console.error('CMS create error:', error);
+        showToast('Unable to save content.', 'error');
+    }
+}
+
+async function deleteCmsContent(type, id) {
+    if (!window.confirm('Delete this content?')) return;
+    try {
+        const res = await fetch(`${API_BASE}/cms/${type}/${id}`, { method: 'DELETE', headers: getAuthHeaders() });
+        const json = await res.json();
+        showToast(json.message || 'Content deleted', json.success ? 'success' : 'error');
+        if (json.success) loadCmsContent();
+    } catch (error) {
+        console.error('CMS delete error:', error);
+        showToast('Unable to delete content.', 'error');
+    }
+}
+
+if (cmsSelect) cmsSelect.addEventListener('change', loadCmsContent);
+if (cmsAddButton) cmsAddButton.addEventListener('click', addCmsContent);
 
 // --- 1. OVERVIEW DATA ---
 async function loadOverviewStats() {

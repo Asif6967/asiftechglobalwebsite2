@@ -21,3 +21,16 @@ INSERT OR IGNORE INTO subscribers (email) VALUES
 -- Insert Sample Inquiries
 INSERT OR IGNORE INTO contacts (name, email, phone, company, service, budget, timeline, message, status) VALUES
 ('Alexander Wright', 'alex.wright@vertexsolutions.io', '+1 555-0199', 'Vertex Solutions', 'Web Development', '$10,000 - $25,000', '1-3 Months', 'We would love to redesign our customer portal into a high-performance dynamic web application with real-time analytics.', 'new');
+
+INSERT OR IGNORE INTO testimonials (name, role, company, quote, rating) VALUES
+('Demo Client', 'Founder', 'Replace with your client', 'Demo proof — replace this quote from the admin panel before launch.', 5);
+
+INSERT OR IGNORE INTO faqs (question, answer, sort_order) VALUES
+('How do we start a project?', 'Share your goals, timeline, and budget through the project brief. We will reply with a practical next-step plan.', 1),
+('Do you work with global and Indian teams?', 'Yes. Engagements can be structured for global enterprises, startups, and growing SMEs.', 2),
+('Can the website content be managed without code?', 'Yes. The admin control center is being extended so content can be edited without developer support.', 3);
+
+INSERT OR IGNORE INTO service_packages (name, audience, description, price_label, features, featured) VALUES
+('Launch Sprint', 'Startups and SMEs', 'A focused digital launch for teams validating a product or service.', 'Custom quote', 'Strategy|UX direction|Responsive build|Launch support', 0),
+('Growth System', 'Scaling businesses', 'A conversion-led web platform with analytics, content, and ongoing iteration.', 'Custom quote', 'Discovery|Design system|Full-stack delivery|Growth roadmap', 1),
+('Enterprise Partner', 'Global B2B teams', 'A senior product engineering partner for complex digital transformation.', 'Custom quote', 'Architecture|Security review|Integrations|Dedicated support', 0);

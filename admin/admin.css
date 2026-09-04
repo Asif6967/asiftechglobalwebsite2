@@ -684,3 +684,9 @@ body {
         grid-template-columns: 1fr;
     }
 }
+.content-actions { display: flex; gap: 0.75rem; align-items: center; }
+.cms-content-list { display: grid; gap: 0.75rem; }
+.cms-item { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid #e5e7eb; border-radius: 10px; background: #fff; }
+.cms-item p { margin: 0.35rem 0 0; color: #64748b; }
+.btn-danger { border: 0; background: #fee2e2; color: #b91c1c; padding: 0.5rem 0.75rem; border-radius: 6px; cursor: pointer; }
+@media (max-width: 700px) { .content-actions { flex-direction: column; align-items: stretch; } .cms-item { align-items: flex-start; flex-direction: column; } }

@@ -10,7 +10,14 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middlewares
-app.use(cors());
+const allowedOrigin = process.env.FRONTEND_ORIGIN;
+app.use(cors(allowedOrigin ? { origin: allowedOrigin } : undefined));
+app.use((req, res, next) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    next();
+});
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
@@ -34,6 +41,7 @@ app.use('/api/newsletter', require('./routes/newsletter'));
 app.use('/api/upload', require('./routes/upload'));
 app.use('/api/payment', require('./routes/payment'));
 app.use('/api/stats', require('./routes/stats'));
+app.use('/api/cms', require('./routes/cms'));
 
 // Health check
 app.get('/api/health', (req, res) => {

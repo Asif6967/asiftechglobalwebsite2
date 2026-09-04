@@ -19,11 +19,16 @@ const storage = multer.diskStorage({
 });
 
 const fileFilter = (req, file, cb) => {
-    const allowedExtensions = /jpeg|jpg|png|webp|gif|svg|pdf|doc|docx/;
-    const extname = allowedExtensions.test(path.extname(file.originalname).toLowerCase());
-    const mimetype = allowedExtensions.test(file.mimetype);
+    const allowedTypes = new Map([
+        ['.jpeg', 'image/jpeg'], ['.jpg', 'image/jpeg'], ['.png', 'image/png'],
+        ['.webp', 'image/webp'], ['.gif', 'image/gif'], ['.svg', 'image/svg+xml'],
+        ['.pdf', 'application/pdf'], ['.doc', 'application/msword'],
+        ['.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+    ]);
+    const extension = path.extname(file.originalname).toLowerCase();
+    const mimetype = allowedTypes.get(extension);
 
-    if (extname || mimetype) {
+    if (mimetype && file.mimetype === mimetype) {
         return cb(null, true);
     } else {
         cb(new Error('Only image and document files are allowed!'));

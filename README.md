@@ -2,6 +2,13 @@
 
 **A modern, production-ready Full-Stack Web Application & Management Suite for AsifTechGlobal.**
 
+## Production checklist
+
+- Set a long random `JWT_SECRET` and unique admin credentials in `backend/.env`; never use the documented defaults in production.
+- Configure `FRONTEND_ORIGIN`, SMTP credentials, and live payment provider keys before accepting real leads or payments.
+- Keep `database/asiftech.db` and `backend/uploads/` backed up; use HTTPS and restrict server access to the admin route.
+- `robots.txt` and `sitemap.xml` are included for the configured Azure custom domain. Update the URLs if the domain changes.
+
 ---
 
 ## 📋 Table of Contents

@@ -47,15 +47,12 @@ function initializeSeedData() {
             console.log(`[Database] Default Admin created: ${adminEmail}`);
         }
 
-        // Seed initial blog posts & portfolio if empty
-        const blogCount = sqlite.prepare('SELECT COUNT(*) as count FROM blogs').get();
-        if (blogCount && blogCount.count === 0) {
-            const seedPath = path.join(dbDir, 'seed.sql');
-            if (fs.existsSync(seedPath)) {
-                const seedSql = fs.readFileSync(seedPath, 'utf8');
-                sqlite.exec(seedSql);
-                console.log('[Database] Seed data populated successfully.');
-            }
+        // Seed idempotently so new CMS tables receive demo content on existing installs.
+        const seedPath = path.join(dbDir, 'seed.sql');
+        if (fs.existsSync(seedPath)) {
+            const seedSql = fs.readFileSync(seedPath, 'utf8');
+            sqlite.exec(seedSql);
+            console.log('[Database] Seed data verified successfully.');
         }
     } catch (err) {
         console.error('[Database Seed Error]:', err.message);

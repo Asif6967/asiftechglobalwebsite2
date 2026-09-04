@@ -1,6 +1,12 @@
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'asiftechglobal_super_secret_jwt_key_2026_!@#';
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET && process.env.NODE_ENV === 'production') {
+    throw new Error('JWT_SECRET must be configured in production.');
+}
+
+const signingSecret = JWT_SECRET || 'development-only-secret-change-me';
 
 function verifyToken(req, res, next) {
     const authHeader = req.headers['authorization'];
@@ -11,7 +17,7 @@ function verifyToken(req, res, next) {
     const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : authHeader;
 
     try {
-        const decoded = jwt.verify(token, JWT_SECRET);
+        const decoded = jwt.verify(token, signingSecret);
         req.user = decoded;
         next();
     } catch (err) {
@@ -21,5 +27,5 @@ function verifyToken(req, res, next) {
 
 module.exports = {
     verifyToken,
-    JWT_SECRET
+    JWT_SECRET: signingSecret
 };

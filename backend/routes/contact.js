@@ -4,6 +4,10 @@ const db = require('../config/db');
 const { verifyToken } = require('../middleware/auth');
 const { sendEmail } = require('../utils/mailer');
 
+const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, character => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+}[character]));
+
 // POST /api/contact (Public form submission)
 router.post('/', async (req, res) => {
     try {
@@ -38,16 +42,16 @@ router.post('/', async (req, res) => {
             html: `
                 <div style="font-family: Arial, sans-serif; padding: 20px; color: #1e293b;">
                     <h2 style="color: #2563eb;">New AsifTechGlobal Inquiry</h2>
-                    <p><strong>Name:</strong> ${name}</p>
-                    <p><strong>Email:</strong> ${email}</p>
-                    <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
-                    <p><strong>Company:</strong> ${company || 'N/A'}</p>
-                    <p><strong>Service:</strong> ${service || 'General'}</p>
-                    <p><strong>Budget:</strong> ${budget || 'N/A'}</p>
-                    <p><strong>Timeline:</strong> ${timeline || 'N/A'}</p>
+                    <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+                    <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+                    <p><strong>Phone:</strong> ${escapeHtml(phone || 'N/A')}</p>
+                    <p><strong>Company:</strong> ${escapeHtml(company || 'N/A')}</p>
+                    <p><strong>Service:</strong> ${escapeHtml(service || 'General')}</p>
+                    <p><strong>Budget:</strong> ${escapeHtml(budget || 'N/A')}</p>
+                    <p><strong>Timeline:</strong> ${escapeHtml(timeline || 'N/A')}</p>
                     <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 15px 0;">
                     <p><strong>Message:</strong></p>
-                    <p style="background: #f8fafc; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">${message}</p>
+                    <p style="background: #f8fafc; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0;">${escapeHtml(message)}</p>
                 </div>
             `
         }).catch(e => console.error('Notification dispatch error:', e));

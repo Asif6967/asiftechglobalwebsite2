@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+Sitemap: https://asiftechglobalwebsite2-h3dxckf6dvczc8as.southindia-01.azurewebsites.net/sitemap.xml
