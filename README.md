@@ -9,6 +9,17 @@
 - Keep `database/asiftech.db` and `backend/uploads/` backed up; use HTTPS and restrict server access to the admin route.
 - `robots.txt` and `sitemap.xml` are included for the configured Azure custom domain. Update the URLs if the domain changes.
 
+## GitHub-driven Azure deployment
+
+`.github/workflows/ci.yml` validates JavaScript on every pull request and push. Azure deployment is deliberately disabled until configured:
+
+1. In GitHub repository **Settings > Secrets and variables > Actions**, add `AZURE_WEBAPP_PUBLISH_PROFILE` as a secret.
+2. Add repository variable `AZURE_WEBAPP_NAME` with the exact Azure App Service name.
+3. Set repository variable `AZURE_DEPLOY_ENABLED` to `true`.
+4. Configure the same production environment variables in Azure App Service; never commit `.env` or credentials.
+
+GitHub Pages cannot host this full-stack app's Node API, SQLite writes, uploads, admin authentication, or payment routes. Use it only as a static fallback unless the backend is separately hosted.
+
 ---
 
 ## 📋 Table of Contents
