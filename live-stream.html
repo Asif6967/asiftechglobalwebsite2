@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Watch the AsifTechGlobal live stream.">
+    <title>Live Stream - AsifTechGlobal</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><h1>AsifTechGlobal</h1></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="live-stream.html" class="active"><i class="fas fa-circle live-dot"></i> Live</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/admin" class="admin-nav-link"><i class="fas fa-lock"></i> Admin</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-header live-page-header">
+        <span class="eyebrow"><i class="fas fa-signal"></i> AsifTechGlobal broadcast</span>
+        <h1>Live. Learn. Grow.</h1>
+        <p>Premium finance, MBA, IT, HR and business insights — streaming now.</p>
+        </section>
+
+        <section class="live-stream-section">
+            <div class="container">
+                <div class="live-stream-card">
+                    <div class="live-player-wrap">
+                        <div id="live-player-placeholder" class="live-player-placeholder">
+                            <i class="fab fa-youtube"></i>
+                            <h2>Your live stream is offline</h2>
+                            <p>Start the scheduled broadcast in YouTube Studio to show it here.</p>
+                            <a class="btn btn-primary" href="https://studio.youtube.com/" target="_blank" rel="noopener">Open YouTube Studio</a>
+                        </div>
+                        <video id="live-player" controls autoplay muted playsinline preload="auto" hidden></video>
+                    </div>
+                    <div class="live-chat-wrap">
+                        <div class="live-chat-heading">
+                            <h2><i class="fas fa-comments"></i> Live Chat</h2>
+                            <p>Chat with viewers without leaving this website.</p>
+                        </div>
+                        <div id="live-chat-placeholder" class="live-chat-placeholder">
+                            <p>Live chat will appear here when a YouTube video ID is active.</p>
+                        </div>
+                        <iframe id="live-chat"
+                                title="AsifTechGlobal live chat"
+                                loading="lazy"
+                                hidden></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="live-stream-section" aria-labelledby="loop-title">
+            <div class="container">
+                <div class="live-stream-card local-loop-card">
+                    <div class="live-player-wrap">
+                        <div class="premium-loop theme-ai" id="premium-loop" aria-live="polite" aria-label="AsifTechGlobal animated broadcast loop">
+                            <video id="background-video" class="background-video" muted autoplay playsinline preload="auto" aria-label="AsifTechGlobal background video"></video>
+                            <div class="background-video-shade"></div>
+                            <div class="loop-grid"></div>
+                            <div class="loop-orbit orbit-one"></div>
+                            <div class="loop-orbit orbit-two"></div>
+                            <div class="loop-glow"></div>
+                            <div class="loop-content">
+                                <span class="loop-live-pill"><i class="fas fa-circle"></i> <span id="loop-label">AI & FUTURE TECH</span></span>
+                                <h2 id="loop-title">Digital <span>Frontier</span></h2>
+                                <p id="loop-subtitle">Artificial intelligence, automation and next-generation computing</p>
+                                <div class="loop-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="live-chat-wrap local-loop-copy">
+                        <div class="live-chat-heading">
+                            <h2><i class="fas fa-bolt"></i> Dynamic broadcast loop</h2>
+                            <p id="loop-status">AI & Future Tech is live now. The next technology theme will load automatically.</p>
+                        </div>
+                        <p id="video-status">IT, finance, computer, technology, HR and other videos play continuously in an automatic loop.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom"><p>&copy; 2024 AsifTechGlobal. All rights reserved.</p></div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.17/dist/hls.min.js"></script>
+    <script>
+        const player = document.getElementById('live-player');
+        const placeholder = document.getElementById('live-player-placeholder');
+        const configureLivePlayer = async () => {
+            const response = await fetch('/api/live-config');
+            if (!response.ok) throw new Error(`Live config request failed: ${response.status}`);
+            const { mode, hlsUrl } = await response.json();
+            if (mode !== 'hls' || !hlsUrl) return;
+            if (player.canPlayType('application/vnd.apple.mpegurl')) {
+                player.src = hlsUrl;
+            } else if (window.Hls && Hls.isSupported()) {
+                const hls = new Hls({ liveSyncDurationCount: 3 });
+                hls.loadSource(hlsUrl);
+                hls.attachMedia(player);
+            } else {
+                throw new Error('This browser does not support HLS playback');
+            }
+            player.hidden = false;
+            placeholder.hidden = true;
+            player.play().catch(() => {});
+        };
+        configureLivePlayer().catch((error) => console.error('[Live player]', error));
+
+        const premiumLoop = document.getElementById('premium-loop');
+        const loopLabel = document.getElementById('loop-label');
+        const loopTitle = document.getElementById('loop-title');
+        const loopSubtitle = document.getElementById('loop-subtitle');
+        const loopStatus = document.getElementById('loop-status');
+        const backgroundVideo = document.getElementById('background-video');
+        const videoStatus = document.getElementById('video-status');
+        const loopThemes = [
+            { className: 'theme-ai', label: 'IT & TECHNOLOGY', title: 'Technology <span>In Motion</span>', subtitle: 'IT services, digital systems and technology trends' },
+            { className: 'theme-cloud', label: 'FINANCE', title: 'Finance <span>Forward</span>', subtitle: 'Financial intelligence, markets and business growth' },
+            { className: 'theme-coding', label: 'COMPUTERS', title: 'Powerful <span>Computing</span>', subtitle: 'Computers, software, hardware and modern productivity' },
+            { className: 'theme-security', label: 'TECHNOLOGY', title: 'Build the <span>Future</span>', subtitle: 'Innovation, cloud platforms and connected solutions' },
+            { className: 'theme-robotics', label: 'HUMAN RESOURCES', title: 'People <span>Power</span>', subtitle: 'HR, careers, teams and better ways of working' },
+            { className: 'theme-data', label: 'OTHER', title: 'Ideas <span>That Move</span>', subtitle: 'Business, learning and inspiration from around the world' }
+        ];
+        let themeIndex = 0;
+        const rotateTheme = () => {
+            const theme = loopThemes[themeIndex];
+            premiumLoop.className = `premium-loop ${theme.className}`;
+            loopLabel.textContent = theme.label;
+            loopTitle.innerHTML = theme.title;
+            loopSubtitle.textContent = theme.subtitle;
+            loopStatus.textContent = `${theme.label} is live now. The next theme will load automatically.`;
+            themeIndex = (themeIndex + 1) % loopThemes.length;
+        };
+        window.setInterval(rotateTheme, 8000);
+
+        // Play the hosted category videos continuously; each file advances automatically.
+        const backgroundVideos = [
+            'media/video1.mp4',
+            'media/video2.mp4',
+            'media/video3.mp4',
+            'media/video4.mp4',
+            'media/main.mp4'
+        ];
+        let videoIndex = 0;
+        let videoAttempts = 0;
+        const playNextBackgroundVideo = () => {
+            if (videoAttempts >= backgroundVideos.length) {
+                backgroundVideo.classList.remove('is-ready');
+                videoStatus.textContent = 'The automatic broadcast loop is temporarily unavailable.';
+                return;
+            }
+            backgroundVideo.src = backgroundVideos[videoIndex];
+            videoIndex = (videoIndex + 1) % backgroundVideos.length;
+            videoAttempts += 1;
+            backgroundVideo.play().catch(() => {
+                videoStatus.textContent = 'Click the video area once to start the muted background playlist.';
+            });
+        };
+        backgroundVideo.addEventListener('loadeddata', () => {
+            videoAttempts = 0;
+            backgroundVideo.classList.add('is-ready');
+            videoStatus.textContent = 'Background playlist is playing. The next video starts automatically.';
+        }, { once: false });
+        backgroundVideo.addEventListener('ended', playNextBackgroundVideo);
+        backgroundVideo.addEventListener('error', () => {
+            playNextBackgroundVideo();
+        });
+        backgroundVideo.addEventListener('click', () => backgroundVideo.play());
+        playNextBackgroundVideo();
+        let loopFrame = 0;
+        const animateLoop = () => {
+            loopFrame += 1;
+            premiumLoop.style.setProperty('--loop-angle', `${loopFrame * 0.18}deg`);
+            premiumLoop.style.setProperty('--loop-shift', `${Math.sin(loopFrame / 50) * 8}px`);
+            window.requestAnimationFrame(animateLoop);
+        };
+        animateLoop();
+    </script>
+</body>
+</html>

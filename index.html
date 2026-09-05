@@ -21,6 +21,7 @@
                 <li><a href="services.html">Services</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="blog.html">Blog</a></li>
+                <li><a href="live-stream.html"><i class="fas fa-circle live-dot"></i> Live</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="/admin" class="admin-nav-link"><i class="fas fa-lock"></i> Admin</a></li>
             </ul>
@@ -32,23 +33,29 @@
         </div>
     </nav>
 
-    <!-- Hero Section with Background Video -->
+    <!-- Hero Section -->
     <section class="hero">
-        <video id="heroVideo" autoplay muted loop playsinline
-               disablePictureInPicture disableRemotePlayback
-               controlsList="nodownload noplaybackrate nofullscreen noremoteplayback"
-               class="hero-video">
-            <source src="media/video1.mp4" type="video/mp4">
-        </video>
+        <video id="home-background-video" class="home-background-video" muted autoplay playsinline preload="auto" aria-hidden="true"></video>
+        <div class="home-video-shade"></div>
+        <div class="hero-orb hero-orb-one"></div>
+        <div class="hero-orb hero-orb-two"></div>
+        <div class="hero-grid"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Welcome to AsifTechGlobal</h1>
-            <p>Connecting Ideas with Innovation Across the Globe</p>
+            <span class="eyebrow hero-eyebrow"><i class="fas fa-sparkles"></i> Digital growth studio</span>
+            <h1>Build what moves<br><span>the world forward.</span></h1>
+            <p>Strategy, technology and premium execution for ambitious businesses ready to grow globally.</p>
             <div class="hero-buttons">
-                <a href="services.html" class="btn btn-primary">Our Services</a>
-                <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
+                <a href="services.html" class="btn btn-primary">Explore capabilities <i class="fas fa-arrow-right"></i></a>
+                <a href="contact.html" class="btn btn-secondary">Start a conversation</a>
+            </div>
+            <div class="hero-trust">
+                <span><i class="fas fa-circle-check"></i> Full-stack delivery</span>
+                <span><i class="fas fa-circle-check"></i> Global-ready systems</span>
+                <span><i class="fas fa-circle-check"></i> Human support</span>
             </div>
         </div>
+        <div class="hero-side-note"><span>01</span><span>Ideas → systems → impact</span></div>
     </section>
 
     <!-- Features Section -->
@@ -201,6 +208,7 @@
                         <li><a href="services.html">Services</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
                         <li><a href="blog.html">Blog</a></li>
+                        <li><a href="live-stream.html">Live Stream</a></li>
                         <li><a href="/admin">Admin Portal</a></li>
                         <li><a href="javascript:void(0)" onclick="openClientPayModal()">Pay Online</a></li>
                     </ul>
@@ -227,5 +235,37 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script>
+        const homeBackgroundVideo = document.getElementById('home-background-video');
+        const homeVideoPlaylist = [
+            'media/videos/it-technology.mp4',
+            'media/videos/finance.mp4',
+            'media/videos/hr-people.mp4',
+            'media/videos/computers.mp4',
+            'media/videos/ai-future.mp4',
+            'media/videos/cloud-cybersecurity.mp4',
+            'media/videos/robotics-hardware.mp4',
+            'media/videos/data-centers.mp4'
+        ];
+        let homeVideoIndex = 0;
+        let homeVideoAttempts = 0;
+        const playNextHomeVideo = () => {
+            if (homeVideoAttempts >= homeVideoPlaylist.length) {
+                homeBackgroundVideo.removeAttribute('src');
+                return;
+            }
+            homeBackgroundVideo.src = homeVideoPlaylist[homeVideoIndex];
+            homeVideoIndex = (homeVideoIndex + 1) % homeVideoPlaylist.length;
+            homeVideoAttempts += 1;
+            homeBackgroundVideo.play().catch(() => {});
+        };
+        homeBackgroundVideo.addEventListener('loadeddata', () => {
+            homeVideoAttempts = 0;
+            homeBackgroundVideo.classList.add('is-ready');
+        });
+        homeBackgroundVideo.addEventListener('ended', playNextHomeVideo);
+        homeBackgroundVideo.addEventListener('error', playNextHomeVideo);
+        playNextHomeVideo();
+    </script>
 </body>
 </html>

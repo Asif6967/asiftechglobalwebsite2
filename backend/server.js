@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const { URL } = require('url');
+const { Readable } = require('stream');
 require('dotenv').config();
 
 // Initialize DB and ensure schema & seeds
@@ -51,6 +53,38 @@ app.get('/api/health', (req, res) => {
         timestamp: new Date().toISOString(),
         version: '2.0.0'
     });
+});
+
+// Expose only the public broadcast ID; never expose the YouTube stream key.
+app.get('/api/live-config', (req, res) => {
+    res.json({
+        mode: process.env.LIVE_STREAM_MODE || 'hls',
+        hlsUrl: process.env.LIVE_STREAM_MODE === 'hls' ? '/api/live/live.m3u8' : null,
+        videoId: process.env.YOUTUBE_LIVE_VIDEO_ID || null
+    });
+});
+
+// Proxy the VM's HLS playlist and segments through the HTTPS App Service origin.
+app.get('/api/live/:segment', async (req, res, next) => {
+    const upstreamBase = process.env.LIVE_HLS_UPSTREAM;
+    if (!upstreamBase || !/^[A-Za-z0-9._-]+$/.test(req.params.segment)) {
+        return res.status(404).end();
+    }
+    try {
+        const upstream = new URL(req.params.segment, `${upstreamBase.replace(/\/+$/, '')}/`);
+        const response = await fetch(upstream);
+        if (!response.ok || !response.body) {
+            return res.status(response.status || 502).end();
+        }
+        res.status(response.status);
+        res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+        res.setHeader('Content-Type', req.params.segment.endsWith('.m3u8')
+            ? 'application/vnd.apple.mpegurl'
+            : 'video/mp2t');
+        Readable.fromWeb(response.body).on('error', next).pipe(res);
+    } catch (error) {
+        next(error);
+    }
 });
 
 // Host Main Frontend Website

@@ -1,0 +1,20 @@
+[Unit]
+Description=AsifTechGlobal 24/7 YouTube live stream
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=asiftech
+WorkingDirectory=/opt/asiftechglobal
+EnvironmentFile=/etc/asiftechglobal/live-stream.env
+Environment=MEDIA_DIR=/opt/asiftechglobal/media
+ExecStart=/opt/asiftechglobal/deploy/azure-live-stream/stream-live.sh
+Restart=always
+RestartSec=10
+TimeoutStopSec=15
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

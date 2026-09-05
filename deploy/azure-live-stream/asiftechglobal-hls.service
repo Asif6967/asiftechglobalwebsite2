@@ -1,0 +1,16 @@
+[Unit]
+Description=AsifTechGlobal website HLS live stream
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Environment=MEDIA_DIR=/opt/asiftechglobal/media
+Environment=HLS_DIR=/var/www/asiftechglobal-hls
+ExecStart=/opt/asiftechglobal/deploy/azure-live-stream/stream-hls.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

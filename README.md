@@ -58,6 +58,7 @@ GitHub Pages cannot host this full-stack app's Node API, SQLite writes, uploads,
 - ✅ **Newsletter Engine**: Collect and export subscriber lists to CSV
 - ✅ **Payment Gateway Integration**: Process invoices and project deposits (Stripe & Razorpay ready + sandbox mock)
 - ✅ **Secure File/Image Upload**: Multer disk storage for blog covers and project thumbnails
+- ✅ **Live Stream Page**: YouTube live player at `/live-stream.html`, configurable with `?v=VIDEO_ID`
 - ✅ **Mobile-First Responsive Design**: 100% responsive on smartphones, tablets, and desktops
 
 ---
@@ -86,6 +87,7 @@ asiftechglobalwebsite2/
 ├── portfolio.html          # Dynamic Project Showcase
 ├── blog.html               # Dynamic Tech Insights & Search
 ├── contact.html            # Contact Form connected to API
+├── live-stream.html        # YouTube live broadcast page
 ├── css/
 │   └── style.css           # Premium UI styling & toast alerts
 ├── js/
@@ -150,6 +152,23 @@ Double-click `start.bat` in the project root. It will install dependencies, laun
    - 🌐 **Website**: [http://localhost:5000](http://localhost:5000)
    - ⚡ **Admin Dashboard**: [http://localhost:5000/admin](http://localhost:5000/admin)
    - 📡 **API Health Check**: [http://localhost:5000/api/health](http://localhost:5000/api/health)
+
+### Azure VM 24/7 live stream
+
+The live page reads the public `YOUTUBE_LIVE_VIDEO_ID` from the backend. The stream itself runs on an Ubuntu Azure VM with FFmpeg and a `systemd` service that restarts automatically after failures or reboots.
+
+On the Ubuntu VM, clone the repository and run:
+
+```bash
+sudo git clone https://github.com/Asif6967/asiftechglobalwebsite2.git /opt/asiftechglobal
+sudo bash /opt/asiftechglobal/deploy/azure-live-stream/install.sh
+sudo nano /etc/asiftechglobal/live-stream.env
+# Set YOUTUBE_STREAM_KEY, then:
+sudo systemctl enable --now asiftechglobal-live
+sudo journalctl -u asiftechglobal-live -f
+```
+
+The installer uses the MP4 files in `media/` as a continuous playlist and never stores the YouTube stream key in the repository. YouTube can still end a broadcast for policy, account, or quota reasons, so no platform can guarantee an unlimited stream.
 
 ---
 
